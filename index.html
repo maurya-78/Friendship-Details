@@ -326,20 +326,25 @@
           <label for="gradtype">Graduation Program</label>
           <select id="gradtype" name="gradtype">
             <option value="">Select</option>
-            <option value="btech">B.Tech</option>
-            <option value="bsc">B.Sc</option>
             <option value="ba">B.A</option>
+            <option value="bba">BBA</option>
+            <option value="bca">BCA</option>
+            <option value="b.com">B.Com</option>
+            <option value="b.sc">B.Sc</option>
+            <option value="b.tech">B-TECH</option>
             <option value="iert">IERT</option>
-            <option value="polytechnic">Polytechnic</option>
+            <option value="polytecnic">POLYTECNIC</option>
+            <option value="mba">MBA</option>
+            <option value="other">OTHER</option>
           </select>
         </div>
        <div class="field hidden" id="otherdiv">
         <label for="othertype"> Other*</label>
         <select id="othertype" name="othertype">
-          <option value="">Select</option>
-          <option value="btech">Online</option>
-          <option value="bsc">In Relation</option>
-          <option value="ba">Unnecessary</option>
+          <option value="select">Select</option>
+          <option value="online">Online</option>
+          <option value="relations">In Relation</option>
+          <option value="un">Unnecessary</option>
         </select>
       </div>
 
@@ -350,13 +355,18 @@
         <label for="currentedu">Current Level of Education *</label>
         <select id="currentedu" name="currentedu" required aria-required="true" onchange="togglePreparationOptions()">
           <option value="">Select</option>
-          <option value="btech">B.Tech</option>
-          <option value="bsc">B.Sc</option>
-          <option value="ba">B.A</option>
-          <option value="iert">IERT</option>
-          <option value="iert">Job</option>
-          <option value="iert">Personal Business</option>
+           <option value="ba">B.A</option>
+            <option value="bba">BBA</option>
+            <option value="bca">BCA</option>
+            <option value="b.com">B.Com</option>
+            <option value="b.sc">B.Sc</option>
+            <option value="b.tech">B-Tech</option>
+            <option value="iert">IERT</option>
+            <option value="polytecnic">POLYTECNIC</option>
+            <option value="mba">MBA</option>
+          <option value="personal_business">Personal Business</option>
           <option value="preparation">Preparation</option>
+          <option value="other">OTHER</option>
         </select>
 
         <div id="prepDiv" class="hidden">
@@ -598,7 +608,7 @@
       document.getElementById('summaryContent').textContent = summaryLines.join('\n');
     }
 
-    function formSubmit() {
+  /*  function formSubmit() {
       alert('Thank you for submitting your friendship details!');
       form.reset();
       friendIndex = 4;
@@ -607,7 +617,60 @@
       currentStep = 0;
       showStep(currentStep);
       generateCaptcha();
-    }
+    } */
+     function formSubmit() {
+  // Popup ko banaye aur dikhaye
+  let popup = document.createElement('div');
+  popup.style.position = 'fixed';
+  popup.style.top = '0';
+  popup.style.left = '0';
+  popup.style.width = '100vw';
+  popup.style.height = '100vh';
+  popup.style.background = 'rgba(0,0,0,0.4)';
+  popup.style.display = 'flex';
+  popup.style.alignItems = 'center';
+  popup.style.justifyContent = 'center';
+  popup.style.zIndex = '9999';
+
+  let box = document.createElement('div');
+  box.style.background = '#fff';
+  box.style.padding = '32px 36px';
+  box.style.borderRadius = '10px';
+  box.style.boxShadow = '0 8px 30px rgba(0,0,0,0.2)';
+  box.style.textAlign = 'center';
+  box.style.animation = 'popup 0.4s';
+
+  // Animation keyframes dynamic
+  let style = document.createElement('style');
+  style.innerHTML = `
+  @keyframes popup {from{transform:scale(0.8);opacity:0;}to{transform:scale(1);opacity:1;}}
+  `;
+  document.head.appendChild(style);
+
+  box.innerHTML = `
+    <div style="font-size:32px;color:#2ecc71;margin-bottom:8px;">🎉</div>
+    <h2 style="margin:0 0 10px 0;color:#2ecc71;">Thank You!</h2>
+    <p style="margin:0 0 18px 0;">Friendship details submitted successfully!</p>
+    <button style="margin-top:8px;padding:8px 30px;background:#27ae60;color:#fff;border:none;border-radius:6px;font-size:16px;cursor:pointer;" id="closeBtn">OK</button>
+  `;
+
+  popup.appendChild(box);
+  document.body.appendChild(popup);
+
+  document.getElementById('closeBtn').onclick = function () {
+    popup.remove();
+  };
+
+  // form data reset logic
+  form.reset();
+  friendIndex = 4;
+  addFriendBtn.style.display = 'inline-block';
+  photoPreview.style.display = 'none';
+  currentStep = 0;
+  showStep(currentStep);
+  generateCaptcha();
+}
+
   </script>
 </body>
 </html>
