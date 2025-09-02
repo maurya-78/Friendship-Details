@@ -218,7 +218,7 @@
       <!-- Step 1 -->
       <section class="step active" aria-label="Personal Information section">
         <label for="name">Full Name *</label>
-        <input id="name" name="name" type="text" placeholder="Enter your full name" />
+        <input id="name" name="name" type="text" placeholder="Enter your full name"  required/>
 
         <label for="nickname">Nickname</label>
         <input id="nickname" name="nickname" type="text" placeholder="Enter your nickname" />
@@ -230,10 +230,10 @@
         <input id="dob" name="dob" type="date"  required/>
 
         <label for="mobile">Mobile Number *</label>
-        <input id="mobile" name="mobile" type="tel" pattern="\\d{10}" required placeholder="Enter your phone no" />
+        <input id="mobile" name="mobile" type="tel" pattern="\\d{10}" required placeholder="Enter your phone no" required/>
 
         <label for="gender">Gender</label>
-        <select id="gender" name="gender">
+        <select id="gender" name="gender" required>
           <option value="">Select</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
@@ -264,7 +264,7 @@
         <input id="crush" name="crush" type="text" placeholder="Enter your present crush name" />
 
         <label for="address">Address</label>
-        <textarea id="address" name="address" rows="2" maxlength="300" aria-describedby="addressCounter"placeholder="Enter your address"></textarea>
+        <textarea id="address" name="address" rows="2" maxlength="300" aria-describedby="addressCounter"placeholder="Enter your address" required></textarea>
         <div id="addressCounter" class="char-counter">0 / 300</div>
 
         <label for="specialtask">Would you recommend this friend for specific tasks?</label>
@@ -323,7 +323,7 @@
         </div>
 
         <div id="gradDiv" class="hidden">
-          <label for="gradtype">Graduation Program</label>
+          <label for="gradtype">Graduation</label>
           <select id="gradtype" name="gradtype">
             <option value="">Select</option>
             <option value="ba">B.A</option>
